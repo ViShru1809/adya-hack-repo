@@ -1,0 +1,9 @@
+quart
+aiohttp==3.9.3
+python-dotenv==1.0.0
+mcp
+pandas
+openpyxl  
+requests                        
+asyncio
+uv

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@orengrinker/jira-mcp-server": "^1.0.3"
+  }
+}

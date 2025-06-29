@@ -1,0 +1,33 @@
+{
+  "name": "@readwise/readwise-mcp",
+  "version": "0.0.4",
+  "description": "Readwise MCP",
+  "homepage": "https://readwise.io",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "readwise-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc --build && node -e \"const path = 'build/index.js'; require('fs').chmodSync(path, '755'); const shebang = '#!/usr/bin/env node\\n'; let content = fs.readFileSync(path, 'utf8'); if (!content.startsWith(shebang)) { content = shebang + content; fs.writeFileSync(path, content); }\"",
+    "dev": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js",
+    "lint": "eslint ."
+  },
+  "author": "Readwise",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "axios": "^1.8.4",
+    "axios-retry": "^4.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@modelcontextprotocol/inspector": "^0.8.2",
+    "eslint": "^9.24.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.1"
+  }
+}

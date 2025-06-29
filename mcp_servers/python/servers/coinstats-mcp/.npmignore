@@ -1,0 +1,30 @@
+# Source code
+src/
+
+# Development files
+.git
+.github
+.vscode
+*.log
+*.swp
+.DS_Store
+
+# Environment files
+.env
+.env.*
+
+# Test files
+test/
+tests/
+*.test.ts
+*.spec.ts
+
+# Configuration files that don't need to be published
+.gitignore
+.npmrc
+tsconfig.json
+
+# Build process files
+.travis.yml
+.gitlab-ci.yml
+azure-pipelines.yml
