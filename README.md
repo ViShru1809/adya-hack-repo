@@ -1,304 +1,178 @@
-# Vanij MCP Platform
+# Adya MCP Hackathon Integration Platform 🚀
 
-## 🚀 [MCP Integration Demo Video. (watch here)](https://drive.google.com/file/d/14JvBERtsT1ed1Db5GCDLllqdW5BL684S/view?usp=sharing)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-20%2B-green.svg)](https://nodejs.org/)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 
-A comprehensive Model Context Protocol (MCP) platform providing standardized integrations between AI assistants and various services and APIs. This repository contains both JavaScript and Python implementations of MCP servers and clients for seamless service integration.
+A comprehensive integration platform for connecting multiple MCP (Model Context Protocol) servers with unified client interfaces.
 
-## 📋 Table of Contents
+## 🌟 Key Features
 
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Quick Start](#quick-start)
-- [JavaScript Setup](#javascript-setup)
-- [Python Setup](#python-setup)
-- [Sample MCP Servers](#sample-mcp-servers)
-- [Configuration](#configuration)
-- [Documentation](#documentation)
-- [API Collections](#api-collections)
-- [Contributing](#contributing)
-- [License](#license)
+- **Multi-Server Integration**: Pre-configured connections to various MCP servers
+- **Unified Client Interface**: Single entry point for all server communications
+- **LLM Support**: Azure OpenAI, Gemini, and standard OpenAI integrations
+- **Development Ready**: Quick-start virtual environment setup
 
-## 🌟 Overview
+# Available Tools
 
-The Vanij MCP Platform enables AI assistants to interact with external services through a standardized protocol. It provides a unified interface for connecting to various APIs and services, making it easier to build sophisticated AI-powered applications.
+## Blender Tools
 
-## ✨ Features
+| Function Name                          | Description |
+|----------------------------------------|-------------|
+| `get_scene_info`                       | Get information about the current scene |
+| `get_object_info`                      | Get information about a specific object |
+| `get_viewport_screenshot`              | Capture a screenshot of the viewport |
+| `execute_blender_code`                 | Execute Python code within Blender |
+| `get_polyhaven_categories`             | Get asset categories from Poly Haven |
+| `search_polyhaven_assets`              | Search for assets on Poly Haven |
+| `download_polyhaven_asset`             | Download an asset from Poly Haven |
+| `set_texture`                          | Apply a texture to an object |
+| `get_polyhaven_status`                 | Check Poly Haven service status |
+| `get_hyper3d_status`                  | Check Hyper3D service status |
+| `get_sketchfab_status`                | Check Sketchfab service status |
+| `search_sketchfab_models`             | Search for models on Sketchfab |
+| `download_sketchfab_model`            | Download a model from Sketchfab |
+| `generate_hyper3d_model_via_text`     | Generate 3D model using text input |
+| `generate_hyper3d_model_via_images`  | Generate 3D model using image input |
+| `poll_rodin_job_status`               | Check status of a Rodin job |
+| `import_generated_asset`              | Import a generated asset into the scene |
 
-- **Multi-language Support**: JavaScript and Python implementations
-- **Extensible Architecture**: Easy to add new MCP servers
-- **Standardized Protocol**: Consistent interface across all integrations
-- **Production Ready**: Built with scalability and reliability in mind
-- **Comprehensive Documentation**: Detailed guides and API references
-- **Testing Tools**: Postman collections for easy testing
+## CoinStats Tools
 
-## 📁 Project Structure
+| Function Name                     | Description |
+|-----------------------------------|-------------|
+| `get-coins`                       | Get list of coins |
+| `get-coin-by-id`                  | Get coin details by ID |
+| `get-coin-chart-by-id`            | Get chart data for a coin |
+| `get-coin-avg-price`              | Get average price of a coin |
+| `get-coin-exchange-price`         | Get exchange price for a coin |
+| `get-ticker-exchanges`            | Get exchanges for a ticker |
+| `get-ticker-markets`              | Get markets for a ticker |
+| `get-blockchains`                 | Get blockchain information |
+| `get-wallet-balance`              | Get wallet balance |
+| `get-wallet-balances`             | Get multiple wallet balances |
+| `get-wallet-sync-status`          | Check wallet sync status |
+| `get-wallet-transactions`         | Get wallet transactions |
+| `transactions-sync`               | Sync transactions |
+| `get-exchanges`                   | Get exchange information |
+| `get-exchange-balance`            | Get exchange balance |
+| `get-exchange-sync-status`        | Check exchange sync status |
+| `get-exchange-transactions`       | Get exchange transactions |
+| `get-fiat-currencies`             | Get fiat currencies |
+| `get-news-sources`                | Get news sources |
+| `get-news`                       | Get news articles |
+| `get-news-by-type`               | Get news by type |
+| `get-news-by-id`                 | Get news by ID |
+| `get-market-cap`                 | Get market capitalization |
+| `get-portfolio-coins`            | Get portfolio coins |
+| `get-portfolio-chart`            | Get portfolio chart |
+| `get-portfolio-transactions`     | Get portfolio transactions |
+| `add-portfolio-transaction`      | Add portfolio transaction |
+| `get-currencies`                 | Get currency information |
+| `save-share-token`               | Save share token |
+| `get-share-token`                | Get share token |
 
-```
-.
-├── mcp_servers/
-│   ├── js/                           # JavaScript implementation
-│   │   ├── clients/                  # MCP clients
-│   │   │   ├── src/
-│   │   │   │   ├── client_and_server_config.ts  # Listed MCP Clients & Servers Configurations.
-│   │   │   │   └── ...
-│   │   │   ├── package.json   
-│   │   │   └── ...
-│   │   ├── servers/                  # MCP servers
-│   │   │   ├── WORDPRESS/           # WordPress integration
-│   │   │   ├── ZOOMMCP/             # Zoom integration
-│   │   │   ├── SALESFORCE_MCP/      # Salesforce integration
-│   │   │   ├── SLACK_MCP/           # Slack integration
-│   │   │   └── etc...
-│   │   └── package.json
-│   └── python/                       # Python implementation
-│       ├── clients/                  # MCP clients
-│       │   ├── src/
-│       │   │   ├── client_and_server_config.py       # Listed MCP Clients & Servers Configurations.
-│       │   │   └── ...
-│       │   ├── requirements.txt
-│       │   └── ...
-│       └── servers/                  # MCP servers
-│           ├── MCP-GSUITE/          # GSuite integration
-│           ├── FACEBOOK_MCP/        # Facebook integration
-│           ├── FACEBOOK_ADS_MCP/    # Facebook Ads integration
-│           ├── POWER_BI_MCP/        # Power BI integration
-│           └── etc ...
-├── mcp_servers_documentation/        # Detailed documentation of about MCP servers
-├── postman_api_collections/         # API testing collections
-└── README.md
-```
+## Readwise.io Tools
 
-## 🚀 Quick Start
+| Function Name               | Description |
+|-----------------------------|-------------|
+| `search_readwise_highlights` | Search through your Readwise highlights |
 
-### Prerequisites
+## Mermaid Tools
 
-- **Node.js**208+ (for JavaScript implementation)
-- **Python** 3.8+ (for Python implementation)
-- **npm** or **yarn** (for JavaScript dependencies)
-- **pip** (for Python dependencies)
+| Function Name               | Description |
+|-----------------------------|-------------|
+| `generate_mermaid_diagram`   | Generate a diagram using Mermaid syntax |
 
-### Choose Your Implementation
+# 🛠️ Setup Instructions
 
-1. **JavaScript**: Follow the [JavaScript Setup](#javascript-setup) guide
-2. **Python**: Follow the [Python Setup](#python-setup) guide
-3. **Both**: Set up both implementations for maximum flexibility
-
-## 🟨 JavaScript Setup
-
-### 1. Navigate to JavaScript Directory
-
+### 1. Clone and Prepare
 ```bash
-cd mcp_servers/js
+git clone https://github.com/ViShru1809/adya_mcp_hackathon.git
+cd adya_mcp_hackathon
 ```
 
-### 2. Install Dependencies
-
-```bash
-npm install
-```
-
-### 3. Build All Components
-
-```bash
-npm run build:all
-```
-
-### 4. Start Development Server
-
-```bash
-npm run dev:client
-```
-
-### 5. Available Scripts
-
-- `npm run build:all` - Build all clients and servers
-- `npm run dev:client` - Run client in development mode
-- `npm run test` - Run test suite
-- `npm run lint` - Run linting checks
-
-### Configuration
-
-JavaScript configuration is managed in:
-```
-mcp_servers/js/clients/src/client_and_server_config.ts
-```
-
-## 🐍 Python Setup
-
-### 1. Navigate to Python Directory
+### 2. Python Client Setup
 
 ```bash
 cd mcp_servers/python/clients
 ```
 
-### 2. Create Virtual Environment
+#### Create and activate virtual environment (Windows)
 
 ```bash
 python -m venv venv
+.\venv\Scripts\activate
 ```
 
-### 3. Activate Virtual Environment
-
-**Windows:**
-```bash
-venv\Scripts\activate
-```
-
-**Unix/MacOS:**
-```bash
-source venv/bin/activate
-```
-
-### 4. Install Dependencies
+#### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
-
-This command automatically installs all server dependencies as well.
-
-### 5. Run the Client
+### 3. Run the Integration Server
 
 ```bash
-python src/main.py
+python run.py
 ```
 
-### Configuration
+# EXPECTED OUTPUT:
 
-Python configuration is managed in:
 ```
-mcp_servers/python/clients/src/client_and_server_config.py
-```
-
-## 🔌 Example MCP Servers
-
-### JavaScript Implementation
-
-| Server | Description | Status |
-|--------|-------------|--------|
-| **WordPress** | Content management and blog operations | ✅ Active |
-| **Zoom** | Video conferencing and meeting management | ✅ Active |
-| **Salesforce** | CRM and sales automation | ✅ Active |
-| **Slack** | Team communication and collaboration | ✅ Active |
-| **Jira** | Project management and issue tracking | ✅ Active |
-| **Google Drive** | Cloud storage and file management | ✅ Active |
-| **Zendesk** | Customer support and ticketing | ✅ Active |
-| **HubSpot** | Marketing and CRM platform | ✅ Active |
-
-### Python Implementation
-
-| Server | Description | Status |
-|--------|-------------|--------|
-| **GSuite** | Google Workspace integration | ✅ Active |
-| **Facebook** | Social media platform integration | ✅ Active |
-| **Facebook Ads** | Advertising and campaign management | ✅ Active |
-| **Power BI** | Business intelligence and analytics | ✅ Active |
-
-## ⚙️ Configuration
-
-### JavaScript Configuration
-
-Edit `mcp_servers/js/clients/src/client_and_server_config.ts`:
-
-```typescript
-export const ServersConfig = [
-    {
-        server_name :"WORDPRESS", // Server Name should be same as the folder name in mcp_servers/js/servers/ folder.
-        server_features_and_capability:`wordpress server is used to create, update, delete and get content from wordpress website.`,
-        path : "build/index.js"
-    },
-    {
-        server_name :"User MCP Server Name",   
-        server_features_and_capability:`feactures description`,
-        path : "dist/index.js" // path should be the build file path in the mcp Server under the folder name
-    },
-];
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                📈🚀✨ ADYA  📈🚀✨                        ║
+║                  MCP Server Integration Hackathon 2k25 !!                    ║
+║                                                                              ║
+║  ✅ Server running on http://0.0.0.0:5001 ✅                                ║
+║  ✅ MCP servers initialization started                                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
 ```
 
-### Python Configuration
 
-Edit `mcp_servers/python/clients/src/client_and_server_config.py`:
+# 🔌 Integrated MCP Servers
 
-```python
-ServersConfig = [
-    {
-		"server_name": "MCP-GSUITE",
-		"command":"uv",
-		"args": [
-			"--directory",
-			"../servers/MCP-GSUITE/mcp-gsuite",
-			"run",
-			"mcp-gsuite"
-		]
-	},
-    //other servers...
-]
+# MCP Servers Status
+
+| Server Name | Location Path | Status |
+|-------------|---------------|--------|
+| Blender MCP | python/servers/blender-mcp | ✅ Live |
+| CoinStats MCP | python/servers/coinstats-mcp | ✅ Live |
+| MCP Mermaid | python/servers/mcp-mermaid | ✅ Live |
+| Readwise MCP | python/servers/readwise-mcp | ✅ Live |
+
+## If Incase of Missing Dependencies:
+Run the following command:
+
+```bash
+pip install --upgrade -r requirements.txt
 ```
 
-## 📚 Documentation
 
-Comprehensive documentation for each MCP server is available in the `mcp_servers_documentation/` directory:
+## Credentials :
 
-- Server-specific setup guides
-- API reference documentation
-- Integration examples
-- Troubleshooting guides
+### Gemini
 
-### Key Documentation Files
+Gemini API key : `AIzaSyB3-j9gYSLIYf8sParyBcq7SV7RFwSmx90`
 
-- `mcp_servers_documentation/server_setup.md` - General server setup
-- `mcp_servers_documentation/api_reference.md` - API documentation
-- `mcp_servers_documentation/examples/` - Integration examples
+Chat Model: `gemini-1.5-flash`
 
-## 🧪 API Collections
+### Coinstats
 
-The `postman_api_collections/` directory contains Postman collections for testing and interacting with MCP servers:
+COINSTATS API KEY: `"FNdJng7R6gp7l2I4gJa/RX3LjfszShG1fvP9BmcLgWs="`
 
-1. Import collections into Postman
-2. Configure environment variables
-3. Test API endpoints
-4. Validate integrations
+### Readwise
 
-## 🤝 Contributing
+ACCESS_TOKEN : `"wSuAgpIPD1lA5Bu0rDgO7VytpDFD6XXYRzLOabn1CSfmtW1Owq"`
 
-We welcome contributions! Please follow these steps:
+# Working video:
 
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
 
-### Development Guidelines
 
-- Follow existing code style and conventions
-- Add tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting PR
+https://github.com/user-attachments/assets/c701333b-a251-4cec-8f84-26d0afb2d14b
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+https://github.com/user-attachments/assets/1fc7ae7b-660c-4d70-a691-0c6a18636b0b
 
-- **Documentation**: Check the `mcp_servers_documentation/` directory
-- **Issues**: Open an issue on GitHub
-- **Discussions**: Use GitHub Discussions for questions
 
-## 🏗️ Roadmap
 
-- [ ] Additional language implementations (Go, Rust)
-- [ ] More third-party service integrations
-- [ ] Enhanced monitoring and logging
-- [ ] Docker containerization
-- [ ] Kubernetes deployment guides
+https://github.com/user-attachments/assets/115ab47d-e63e-4a9f-8bca-b494f736681c
 
----
-
-**Built with ❤️ by the Vanij Team**
